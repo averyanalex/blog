@@ -1,0 +1,13 @@
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      recursive: true
+
+pipeline:
+  build:
+    image: klakegg/hugo
+    commands:
+      - hugo --minify
+    when:
+      event: [pull_request, push]
