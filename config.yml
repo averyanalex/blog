@@ -15,8 +15,8 @@ languages:
 DefaultContentLanguage: ru
 
 permalinks:
-  post: /p/:slug/
-  page: /:slug/
+  post: /p/:filename/
+  page: /:filename/
 
 params:
   mainSections:
