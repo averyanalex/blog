@@ -14,6 +14,7 @@ pipeline:
 
   deploy_ipfs:
     image: ipfs/ipfs-cluster
+    secrets: [ipfs_cluster_host, ipfs_cluster_auth]
     commands:
-      - PIN_CID="$(ipfs-cluster-ctl --host ${IPFS_CLUSTER_HOST} --basic-auth ${IPFS_CLUSTER_AUTH} add --name averyan.ru-${CI_COMMIT_SHA} --rmin 2 --rmax 3 --cid-version 1 --recursive --quieter public)"
+      - PIN_CID="$(ipfs-cluster-ctl --host $IPFS_CLUSTER_HOST --basic-auth $IPFS_CLUSTER_AUTH add --name averyan.ru-${CI_COMMIT_SHA} --rmin 2 --rmax 3 --cid-version 1 --recursive --quieter public)"
       - echo "Succesfully added pin $PIN_CID"
