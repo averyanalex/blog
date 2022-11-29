@@ -34,7 +34,24 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "stack": "stack"
+      }
+    },
+    "stack": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667057327,
+        "narHash": "sha256-N42qwsDjsbAdHcmP0QG0LzCFvphVZ6bIq0CNEPxmxQM=",
+        "owner": "CaiJimmy",
+        "repo": "hugo-theme-stack",
+        "rev": "196116f20d655e4e3f9b4cb2c78edbefc898b7f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CaiJimmy",
+        "repo": "hugo-theme-stack",
+        "type": "github"
       }
     }
   },
