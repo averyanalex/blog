@@ -34,8 +34,8 @@ params:
     lastUpdated: Jan 02, 2006 15:04 MST
 
   sidebar:
-    # emoji: 😼
-    # subtitle: Welcome to my blog!
+      emoji: 🦜
+    subtitle: Linux and physics fan.
     avatar:
       enabled: true
       local: true
