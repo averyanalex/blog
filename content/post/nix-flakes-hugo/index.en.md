@@ -4,7 +4,17 @@ description: "Using nix to build and serve hugo-based site"
 date: 2022-11-29T15:31:37+03:00
 ---
 
-# Writing flake.nix
+## Advantages of managing Hugo website with Nix.
+
+- Reproducible builds: Nix allows you to reproducible build your Hugo website across multiple machines.
+- Dependency management: Nix makes it easy to manage theme, other dependencies and even Hugo itself for your website.
+- Easy deployment: just set root of your nginx virtualHost to site's package.
+
+## Setup your site.
+
+### Write flake.nix.
+
+This is an example of flake.nix I use for this blog, adapt it for your needs.
 
 ```nix
 {
@@ -30,9 +40,11 @@ date: 2022-11-29T15:31:37+03:00
           name = "blog";
           # Exclude themes and public folder from build sources
           src = builtins.filterSource
-            (path: type: !(type == "directory" && (baseNameOf path == "themes" || baseNameOf path == "public")))
+            (path: type: !(type == "directory" &&
+              (baseNameOf path == "themes" ||
+                baseNameOf path == "public")))
             ./.;
-          # Link theme to themes folder
+          # Link theme to themes folder and build
           buildPhase = ''
             mkdir -p themes
             ln -s ${stack} themes/stack
@@ -43,7 +55,6 @@ date: 2022-11-29T15:31:37+03:00
           '';
           meta = with pkgs.lib; {
             description = "AveryanAlex's personal blog";
-            # license = licenses.cc-by-nc-sa-40;
             platforms = platforms.all;
           };
         };
@@ -51,8 +62,8 @@ date: 2022-11-29T15:31:37+03:00
       {
         packages = {
           blog = blog;
+          default = blog;
         };
-        defaultPackage = blog;
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [ hugo ];
@@ -66,27 +77,58 @@ date: 2022-11-29T15:31:37+03:00
 }
 ```
 
-# Serving
+### Setup direnv.
 
-Add blog's flake to your server's flake inputs:
+```shell
+echo use flake >> .envrc
+echo .direnv >> .gitignore
+direnv allow
+```
+
+### Add result to .gitignore.
+
+Result folder is a symlink to built website created by `nix build` command.
+
+```shell
+echo result >> .gitignore
+```
+
+## Preview and build.
+
+Run development server:
+
+```shell
+hugo server -D
+```
+
+Build production release with nix:
+
+```shell
+nix build
+```
+
+## Deploying to nginx webserver.
+
+Now we will create nginx virtualHost config for the site.
+
+Add website to server's flake inputs:
 
 ```nix
 {
-  inputs.averyanalex-blog.url = "github:averyanalex/blog";
+  inputs.blog.url = "github:averyanalex/blog";
 }
 ```
 
-Setup nginx to serve your blog:
+Setup nginx virtualHost to serve your site:
 
 ```nix
 { inputs, ... }:
 {
   services.nginx.virtualHosts."averyan.ru" = {
-    root = inputs.averyanalex-blog.packages.x86_64-linux.blog;
+    # TODO: same config for any arch
+    root = inputs.blog.defaultPackage.x86_64-linux;
     useACMEHost = "averyan.ru";
     forceSSL = true;
-    kTLS = true;
-    http3 = true;
   };
 }
 ```

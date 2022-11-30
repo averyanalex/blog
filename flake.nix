@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
+    # Import theme
     stack = {
       url = github:CaiJimmy/hugo-theme-stack;
       flake = false;
@@ -18,9 +19,13 @@
 
         blog = pkgs.stdenv.mkDerivation {
           name = "blog";
+          # Exclude themes and public folder from build sources
           src = builtins.filterSource
-            (path: type: !(type == "directory" && (baseNameOf path == "themes" || baseNameOf path == "public")))
+            (path: type: !(type == "directory" &&
+              (baseNameOf path == "themes" ||
+                baseNameOf path == "public")))
             ./.;
+          # Link theme to themes folder and build
           buildPhase = ''
             mkdir -p themes
             ln -s ${stack} themes/stack
@@ -31,7 +36,6 @@
           '';
           meta = with pkgs.lib; {
             description = "AveryanAlex's personal blog";
-            # license = licenses.cc-by-nc-sa-40;
             platforms = platforms.all;
           };
         };
@@ -39,11 +43,12 @@
       {
         packages = {
           blog = blog;
+          default = blog;
         };
-        defaultPackage = blog;
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [ hugo ];
+          # Link theme to themes folder
           shellHook = ''
             mkdir -p themes
             ln -sf ${stack} themes/stack
