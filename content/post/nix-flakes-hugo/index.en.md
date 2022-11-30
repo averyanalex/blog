@@ -2,6 +2,8 @@
 title: "Nix flakes for Hugo site"
 description: "Using nix to build and serve hugo-based site"
 date: 2022-11-29T15:31:37+03:00
+image: hugo-build-nix.png
+tags: [NixOS]
 ---
 
 ## Advantages of managing Hugo website with Nix.
