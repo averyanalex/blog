@@ -1,6 +1,6 @@
 ---
 title: "Nix flakes for Hugo site"
-description: "Using nix to build and serve hugo-based site"
+description: "How to use nix to build and deploy hugo-based website"
 date: 2022-11-29T15:31:37+03:00
 image: hugo-build-nix.png
 tags: [NixOS]
