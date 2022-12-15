@@ -8,8 +8,10 @@ tags: [NixOS]
 
 ## Advantages of managing Hugo website with Nix.
 
-- Reproducible builds: Nix allows you to reproducible build your Hugo website across multiple machines.
-- Dependency management: Nix makes it easy to manage theme, other dependencies and even Hugo itself for your website.
+- Reproducible builds: Nix allows you to reproducible build your Hugo website
+  across multiple machines.
+- Dependency management: Nix makes it easy to manage theme, other dependencies
+  and even Hugo itself for your website.
 - Easy deployment: just set root of your nginx virtualHost to site's package.
 
 ## Setup your site.
