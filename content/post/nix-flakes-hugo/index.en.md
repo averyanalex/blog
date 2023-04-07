@@ -126,11 +126,11 @@ Add website to server's flake inputs:
 Setup nginx virtualHost to serve your site:
 
 ```nix
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
+
 {
   services.nginx.virtualHosts."averyan.ru" = {
-    # TODO: same config for any arch
-    root = inputs.blog.defaultPackage.x86_64-linux;
+    root = inputs.blog.defaultPackage.${pkgs.hostPlatform.system};
     useACMEHost = "averyan.ru";
     forceSSL = true;
   };
