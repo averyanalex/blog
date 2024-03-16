@@ -82,9 +82,11 @@ Community](https://answers.microsoft.com/en-us/windows/forum/all/error-code-2503
 
 ![Список публичных пиров Yggdrasil в России](public-peers.png)
 
-Например, можно использовать мой пир (г. Москва): `tls://ygg.averyan.ru:8362`
+Например, можно использовать мой пир (г. Москва): `tls://ygg-msk-1.averyan.ru:8363`
+или `quic://ygg-msk-1.averyan.ru:8364` (`quic` вариант предпочтительнее, если он у вас
+работает и не заблокирован).
 
-Но, к сожалению, некоторые из них могут не работать. Проверить [список доступных
+Но, в   озможно, не все из них работают - проверить [список доступных
 пиров](https://publicpeers.neilalexander.dev/) можно на сайте разработчика сети.
 
 ![Статус публичных пиров сети Yggdrasil](peers-status.png)
@@ -100,14 +102,13 @@ Community](https://answers.microsoft.com/en-us/windows/forum/all/error-code-2503
 
 ![Конфиг Yggdrasil сразу после установки](original-config.png)
 
-Введите выбранные вами пиры в список Peers. Перед адресами пиров должно быть по
-4 пробела, а перед последней `]` - два.
+Введите выбранные вами пиры в список Peers.
 
 ```
-==Peers: [
-====tls://ygg.averyan.ru:8362
-====tcp://box.paulll.cc:13337
-==]
+Peers: [
+  tls://ygg.averyan.ru:8362
+  tcp://box.paulll.cc:13337
+]
 ```
 
 ![Конфиг Yggdrasil с указанными пирами](peers-config.png)
