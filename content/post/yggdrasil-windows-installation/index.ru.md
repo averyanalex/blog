@@ -86,7 +86,7 @@ Community](https://answers.microsoft.com/en-us/windows/forum/all/error-code-2503
 или `quic://ygg-msk-1.averyan.ru:8364` (`quic` вариант предпочтительнее, если он у вас
 работает и не заблокирован).
 
-Но, в   озможно, не все из них работают - проверить [список доступных
+Но, возможно, не все из них работают - проверить [список доступных
 пиров](https://publicpeers.neilalexander.dev/) можно на сайте разработчика сети.
 
 ![Статус публичных пиров сети Yggdrasil](peers-status.png)
