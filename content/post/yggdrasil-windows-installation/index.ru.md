@@ -104,7 +104,7 @@ Community](https://answers.microsoft.com/en-us/windows/forum/all/error-code-2503
 
 Введите выбранные вами пиры в список Peers.
 
-```
+```hjson
 Peers: [
   tls://ygg.averyan.ru:8362
   tcp://box.paulll.cc:13337
@@ -161,7 +161,7 @@ Windows](cmd-getpeers.png)
 Yggdrasil](http://[319:3cf0:dd1d:47b9:20c:29ff:fe2c:39be]/) (**доступен только
 из сети Yggdrasil** и может грузиться достаточно долго):
 
-```
+```shell
 ping [319:3cf0:dd1d:47b9:20c:29ff:fe2c:39be]
 ```
 

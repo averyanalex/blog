@@ -6,7 +6,7 @@ image: hugo-build-nix.png
 tags: [NixOS]
 ---
 
-## Advantages of managing Hugo website with Nix.
+## Advantages of managing Hugo website with Nix
 
 - Reproducible builds: Nix allows you to reproducible build your Hugo website
   across multiple machines.
@@ -14,9 +14,9 @@ tags: [NixOS]
   and even Hugo itself for your website.
 - Easy deployment: just set root of your nginx virtualHost to site's package.
 
-## Setup your site.
+## Setup your site
 
-### Write flake.nix.
+### Write flake.nix
 
 This is an example of flake.nix I use for this blog, adapt it for your needs.
 
@@ -81,7 +81,7 @@ This is an example of flake.nix I use for this blog, adapt it for your needs.
 }
 ```
 
-### Setup direnv.
+### Setup direnv
 
 ```shell
 echo use flake >> .envrc
@@ -89,7 +89,7 @@ echo .direnv >> .gitignore
 direnv allow
 ```
 
-### Add result to .gitignore.
+### Add result to .gitignore
 
 Result folder is a symlink to built website created by `nix build` command.
 
@@ -97,7 +97,7 @@ Result folder is a symlink to built website created by `nix build` command.
 echo result >> .gitignore
 ```
 
-## Preview and build.
+## Preview and build
 
 Run development server:
 
@@ -111,7 +111,7 @@ Build production release with nix:
 nix build
 ```
 
-## Deploying to nginx webserver.
+## Deploying to nginx webserver
 
 Now we will create nginx virtualHost config for the site.
 

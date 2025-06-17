@@ -13,6 +13,7 @@ image: bot-v2-example.png
 Языки программирования: Rust, SQL.
 
 Ключевые библиотеки:
+
 * [tokio](https://tokio.rs/) (асинхронный рантайм)
 * [reqwest](https://github.com/seanmonstar/reqwest) (http клиент)
 * [sqlx](https://github.com/launchbadge/sqlx) (работа с базой данных)

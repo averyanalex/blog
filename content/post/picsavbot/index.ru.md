@@ -64,6 +64,7 @@ image: picsavbot-question-cucumber.jpg
 @picsavbot](picsavbot-python.jpg)
 
 ## О проекте
+
 Исходный код: [averyanalex/picsavbot](https://github.com/averyanalex/picsavbot).
 
 Языки программирования: Rust, Python.

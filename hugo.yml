@@ -1,22 +1,26 @@
 baseURL: https://averyan.ru
 languageCode: ru
 theme: stack
-paginate: 5
 title: AveryanAlex's blog
+
+hasCJKLanguage: false
 
 languages:
   ru:
     languageName: Русский
-    weight: 1
+    weight: 2
   en:
     languageName: English
-    weight: 2
+    weight: 1
 
-DefaultContentLanguage: ru
+DefaultContentLanguage: en
+
+pagination:
+    pagerSize: 10
 
 permalinks:
-  post: /p/:filename/
-  page: /:filename/
+  post: /p/:slug/
+  page: /:slug/
 
 params:
   mainSections:
@@ -35,7 +39,7 @@ params:
 
   sidebar:
     emoji: 🦜
-    subtitle: Linux and physics fan.
+    subtitle: Computer science student.
     avatar:
       enabled: true
       local: true
@@ -94,6 +98,11 @@ menu:
       url: https://github.com/averyanalex
       params:
         icon: brand-github
+    - identifier: telegram
+      name: Telegram
+      url: https://t.me/averyanalex
+      params:
+        icon: brand-telegram
 
 related:
   includeNewer: true

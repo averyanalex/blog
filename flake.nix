@@ -7,24 +7,31 @@
 
     # Import theme
     stack = {
-      url = github:CaiJimmy/hugo-theme-stack;
+      url = "github:CaiJimmy/hugo-theme-stack";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, stack }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+      stack,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
         blog = pkgs.stdenv.mkDerivation {
           name = "blog";
           # Exclude themes and public folder from build sources
-          src = builtins.filterSource
-            (path: type: !(type == "directory" &&
-              (baseNameOf path == "themes" ||
-                baseNameOf path == "public")))
-            ./.;
+          src = builtins.filterSource (
+            path: type: !(type == "directory" && (baseNameOf path == "themes" || baseNameOf path == "public"))
+          ) ./.;
+          nativeBuildInputs = [ pkgs.git ];
+          leaveDotGit = true;
           # Link theme to themes folder and build
           buildPhase = ''
             mkdir -p themes
@@ -54,5 +61,6 @@
             ln -sf ${stack} themes/stack
           '';
         };
-      });
+      }
+    );
 }
