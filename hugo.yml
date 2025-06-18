@@ -15,8 +15,10 @@ languages:
 
 DefaultContentLanguage: en
 
+enableGitInfo: true
+
 pagination:
-    pagerSize: 10
+  pagerSize: 10
 
 permalinks:
   post: /p/:slug/
