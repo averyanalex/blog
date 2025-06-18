@@ -15,4 +15,3 @@ hugo.linux
 # Nix
 .direnv
 /result
-/themes
