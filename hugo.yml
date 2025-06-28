@@ -8,12 +8,12 @@ hasCJKLanguage: false
 languages:
   ru:
     languageName: Русский
-    weight: 2
+    weight: 1
   en:
     languageName: English
-    weight: 1
+    weight: 2
 
-DefaultContentLanguage: en
+DefaultContentLanguage: ru
 
 enableGitInfo: true
 
